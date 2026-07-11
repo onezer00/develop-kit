@@ -173,15 +173,15 @@
     - Conectar o frontend ao backend de autenticaÃ§Ã£o
 
 - [ ] T009 Create the reusable Design System and shared UI primitives
-  - Description: Build a shared UI package with tokens, buttons, cards, inputs, and layout primitives that support the premium experience.
-  - Requirement: FR-015, NFR-003, NFR-004
+  - Description: Build a shared UI package with tokens, motion tokens, buttons, inputs, command surfaces, capability tiles, feedback states, and layout primitives that support a modern developer-workspace experience.
+  - Requirement: FR-015, FR-017, NFR-003, NFR-004
   - User Story: US-1, US-4
   - User Problem: UP-0008
   - Capability: Design System
   - Epic: E-003
   - Arquivos provÃ¡veis: packages/ui/src/components/*.tsx, packages/ui/src/design-tokens/*.ts, packages/ui/src/index.ts
   - DependÃªncias: T008
-  - CritÃ©rios de aceite: Os componentes comuns sÃ£o reutilizÃ¡veis; eles funcionam bem em landing page, auth e dashboard; o design permanece consistente.
+  - Critérios de aceite: Os componentes comuns são reutilizáveis; funcionam em landing page, auth, onboarding, dashboard e capability shell; incluem hover, focus, loading, success, error e reduced-motion states; o design permanece consistente.
   - Prioridade: Alta
   - Estimativa: Grande
   - Subtasks:
@@ -208,7 +208,7 @@
 
 - [ ] T011 Implement the main application layout and navigation
   - Description: Build the primary shell for unauthenticated and authenticated views, including navigation and workspace entry points.
-  - Requirement: FR-003, FR-004, FR-005, FR-015, NFR-003
+  - Requirement: FR-003, FR-004, FR-005, FR-015, FR-016, FR-017, NFR-003, NFR-004
   - User Story: US-1
   - User Problem: UP-0001, UP-0002, UP-0008
   - Capability: Workspace Shell
@@ -229,14 +229,14 @@
 
 - [ ] T012 Build the landing page and value proposition experience
   - Description: Create a polished landing page that explains the product clearly and drives users into sign-up or sign-in.
-  - Requirement: FR-001, FR-015, NFR-004, NFR-008
+  - Requirement: FR-001, FR-015, FR-017, NFR-004, NFR-008
   - User Story: US-1
   - User Problem: UP-0001
   - Capability: Public Experience
   - Epic: E-003
   - Arquivos provÃ¡veis: apps/web/src/pages/LandingPage.tsx, apps/web/src/components/HeroSection.tsx, apps/web/src/components/CTASection.tsx
   - DependÃªncias: T008, T009
-  - CritÃ©rios de aceite: A landing page comunica claramente o valor do produto, fica visualmente premium e guia o usuÃ¡rio para o prÃ³ximo passo.
+  - Critérios de aceite: A landing page comunica claramente o valor do produto, estabelece a identidade visual moderna do workspace e guia o usuário para Google Auth sem parecer uma landing genérica.
   - Prioridade: Alta
   - Estimativa: MÃ©dia
   - Subtasks:
@@ -245,15 +245,15 @@
     - Preparar copy para validaÃ§Ã£o do MVP
 
 - [ ] T013 Build the dashboard as the primary workspace
-  - Description: Implement the main dashboard screen that acts as the central hub for capabilities, search, and recent activity.
-  - Requirement: FR-003, FR-004, FR-005, FR-009, FR-010, FR-015
+  - Description: Implement the main dashboard screen as a modern developer productivity cockpit with search-first access, workflow grouping, recent activity, favorites, and visually distinct capability entry points.
+  - Requirement: FR-003, FR-004, FR-005, FR-009, FR-010, FR-015, FR-016, FR-017
   - User Story: US-1, US-3
   - User Problem: UP-0001, UP-0002, UP-0004, UP-0007
   - Capability: Workspace
   - Epic: E-003
   - Arquivos provÃ¡veis: apps/web/src/pages/DashboardPage.tsx, apps/web/src/components/CapabilityGrid.tsx, apps/web/src/components/WorkspaceShell.tsx
   - DependÃªncias: T011, T007
-  - CritÃ©rios de aceite: O usuÃ¡rio entra no dashboard e consegue localizar as capabilities principais sem navegar em pÃ¡ginas isoladas.
+  - Critérios de aceite: O usuário entra no dashboard e consegue localizar as capabilities principais sem navegar em páginas isoladas; a tela não se limita a uma grade estática de cards; favoritos, recentes e busca têm presença clara.
   - Prioridade: Alta
   - Estimativa: Grande
   - Subtasks:
@@ -307,7 +307,7 @@
 
 - [ ] T016 Implement the initial capability modules
   - Description: Build the approved MVP capabilities: JWT Decoder, Base64 Encode/Decode, UUID Generator, Hash Generator, Timestamp Converter, JSON Formatter, JSON Validator, YAML Formatter, CSV to JSON, SQL Formatter, URL Encode/Decode, Query Params Parser, HTTP Status Reference, Headers Formatter, and cURL Formatter.
-  - Requirement: FR-004, FR-005, FR-006, FR-007, FR-011, FR-012, FR-013, NFR-001, NFR-002, NFR-005
+  - Requirement: FR-004, FR-005, FR-006, FR-007, FR-011, FR-012, FR-013, FR-017, NFR-001, NFR-002, NFR-005
   - User Story: US-1, US-2, US-4
   - User Problem: UP-0001, UP-0002, UP-0003, UP-0005
   - Capability: Client-side Capabilities
@@ -449,8 +449,8 @@
 #### User Story 5.2 â€” Ensure the MVP is maintainable and demo-ready
 
 - [ ] T019 Add automated tests for core user journeys and capability flows
-  - Description: Implement unit, integration, and end-to-end tests for authentication, workspace access, search, history, and representative capabilities.
-  - Requirement: FR-002, FR-003, FR-005, FR-006, FR-008, FR-009, FR-010, FR-012, FR-013, NFR-001, NFR-003, NFR-004, NFR-005, SC-001, SC-002, SC-003, SC-004, SC-006
+  - Description: Implement unit, integration, and end-to-end tests for authentication, workspace access, search, history, representative capabilities, responsive layout, feedback states, and reduced-motion behavior.
+  - Requirement: FR-002, FR-003, FR-005, FR-006, FR-008, FR-009, FR-010, FR-012, FR-013, FR-016, FR-017, NFR-001, NFR-003, NFR-004, NFR-005, SC-001, SC-002, SC-003, SC-004, SC-006
   - User Story: US-1, US-2, US-3, US-4
   - User Problem: UP-0001, UP-0002, UP-0003, UP-0005, UP-0007, UP-0008
   - Capability: Testing
@@ -463,7 +463,7 @@
   - Subtasks:
     - Criar testes unitÃ¡rios para utilidades e componentes
     - Criar testes de integraÃ§Ã£o para API
-    - Criar smoke tests E2E para fluxo principal
+    - Criar smoke tests E2E para fluxo principal, viewport mobile/desktop e reduced-motion
 
 - [ ] T020 Create README and implementation documentation
   - Description: Document the architecture, environment setup, feature scope, and local startup instructions for the MVP.
@@ -481,6 +481,7 @@
     - Escrever setup local e comandos principais
     - Documentar stack, estrutura e decisÃµes de arquitetura
     - Registrar limites e prÃ³ximos passos do MVP
+
 
 
 

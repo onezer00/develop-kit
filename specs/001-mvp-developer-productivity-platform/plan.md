@@ -28,7 +28,7 @@ This implementation plan is anchored to the approved decision and discovery arti
 
 **Performance Goals**: Fast initial load, sub-second interactions for capability workflows, low-latency client-side transformations
 
-**Constraints**: Must support a premium experience, client-side-first processing, moderate initial scope, easy future extension without overengineering
+**Constraints**: Must support a modern developer-workspace experience, client-side-first processing, purposeful motion with reduced-motion support, moderate initial scope, easy future extension without overengineering
 
 **Scale/Scope**: MVP for an initial user cohort with a constrained set of capabilities and simple user data model
 
@@ -139,9 +139,9 @@ The architecture will use client-side execution for all approved MVP capabilitie
 - Lightweight onboarding for username and theme selection.
 
 ### 2. Workspace Experience
-- Dashboard shell with search, recent history, and capability entry points.
-- Modular capability modules that load as part of a single workspace experience.
-- Shared layout and navigation primitives.
+- Dashboard shell with prominent search, workflow grouping, recent history, favorites, and capability entry points.
+- Modular capability modules that load as part of a single workspace experience with smooth, fast transitions that preserve context.
+- Shared layout, navigation primitives, responsive interaction states, and motion patterns.
 
 ### 3. Capability System
 - Capability registry for core tools.
@@ -262,9 +262,12 @@ The architecture will use client-side execution for all approved MVP capabilitie
 - TanStack Query or React Query can be considered later if data-fetching grows; for MVP, simple service layer + state may be enough.
 
 ### UI Architecture
-- Shared design system package under packages/ui for tokens, primitives, and layout composition.
-- The workspace shell and capability modules will share the same primitives to preserve a premium and consistent experience.
+- Shared design system package under packages/ui for tokens, primitives, motion tokens, interaction states, and layout composition.
+- The workspace shell and capability modules will share the same primitives to preserve a modern, polished, consistent developer-workspace experience.
 - Tailwind CSS will be used together with a token-driven theme system.
+- Motion must be functional: use it for navigation continuity, command feedback, loading/success/error states, copy/favorite confirmation, theme switching, and capability transitions.
+- Motion must respect `prefers-reduced-motion` and must not block task completion or degrade perceived performance.
+- The dashboard must not be implemented as only a static grid of cards; it should behave as a productivity cockpit with search-first access, recent/favorite surfaces, workflow grouping, and visually distinct capability entry points.
 
 ### Client-Side Capability Execution
 - Capability logic will be implemented as modular features under apps/web/src/features.
@@ -305,8 +308,8 @@ The architecture will use client-side execution for all approved MVP capabilitie
 
 ### Frontend
 - Unit tests for utility functions, form validation, and capability transforms.
-- Component tests for shared UI primitives and workspace shell behavior.
-- E2E tests using Playwright for main onboarding, auth, capability access, and search flows.
+- Component tests for shared UI primitives, motion/reduced-motion behavior, and workspace shell behavior.
+- E2E tests using Playwright for main onboarding, auth, capability access, search flows, copy/favorite feedback, and responsive workspace smoke flows.
 
 ### Backend
 - Unit tests for auth, user profile, history, and schema validation.
@@ -339,8 +342,8 @@ The architecture will use client-side execution for all approved MVP capabilitie
 - OAuth and authentication integration may introduce security and configuration complexity.
   - Mitigation: Keep the MVP to Google Auth only with a minimal but secure session model.
 
-- UI consistency may drift if capability modules are built independently.
-  - Mitigation: Enforce a shared design system and capability contract from the start.
+- UI consistency may drift if capability modules are built independently, or if motion is implemented ad hoc.
+  - Mitigation: Enforce a shared design system, motion tokens, interaction-state patterns, and capability contract from the start.
 
 - Search and history can become over-scoped if implemented too broadly.
   - Mitigation: Limit MVP search and history to key workspace items and recent activity.
@@ -371,6 +374,10 @@ Recommended minimum events:
 - `error_shown`: user-facing error occurred, with coarse error code and surface.
 
 This set supports MVP funnel, activation, retention signals, capability adoption, and quality monitoring without collecting sensitive developer data.
+
+
+
+
 
 
 

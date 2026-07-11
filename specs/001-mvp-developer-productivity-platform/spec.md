@@ -30,7 +30,7 @@ A developer should be able to reach the most common productivity tasks from one 
 
 1. **Given** a visitor who wants to use the product, **When** they enter the public experience, **Then** they can see a hero section with a value proposition, a primary call to action, and a path to the workspace entry point in no more than two clicks from the landing page.
 2. **Given** an authenticated user, **When** they open the workspace, **Then** they can see the core capabilities grouped by workflow, with at least one capability card visible for each of the Authentication, Data, and API & Web workflows.
-3. **Given** a user selects a capability, **When** the workflow opens, **Then** the main form or action surface is visible within 500ms and the user can complete the primary task without leaving the workspace context.
+3. **Given** a user selects a capability, **When** the workflow opens, **Then** the main form or action surface is visible within 500ms, the transition preserves spatial context, and the user can complete the primary task without leaving the workspace context.
 
 ---
 
@@ -62,7 +62,7 @@ A user should be able to find prior work through search, recent history, or favo
 
 1. **Given** a user has used one or more capabilities previously, **When** they open the workspace, **Then** they can see a recent history list with up to five entries ordered by recency and a visible empty state when no history exists.
 2. **Given** a user enters a search term, **When** they perform global search, **Then** the system returns a ranked list of matching capabilities and recent items within 500ms and shows a defined empty state when there are no matches.
-3. **Given** a user marks a capability as a favorite, **When** they return to the workspace, **Then** the favorite appears in a dedicated favorites area and can be opened in one click.
+3. **Given** a user marks a capability as a favorite, **When** they return to the workspace, **Then** the favorite appears in a dedicated favorites area with clear visual feedback and can be opened in one click.
 
 ---
 
@@ -78,7 +78,7 @@ A user should be able to use the platform with confidence when manipulating toke
 
 1. **Given** a user opens a capability that can run locally, **When** they use it, **Then** the interface displays a local-processing indicator before execution and does not require a server-side round trip for the transformation when local execution is available.
 2. **Given** a user uses a capability with sensitive input, **When** the task completes, **Then** the system does not persist the input values unless the user explicitly saves them, and the interface shows the relevant privacy state.
-3. **Given** a user reviews the workspace experience, **When** they interact with the product, **Then** the UI exposes a defined loading state, defined error state, and accessible controls that meet WCAG 2.1 AA contrast requirements.
+3. **Given** a user reviews the workspace experience, **When** they interact with the product, **Then** the UI exposes defined loading, empty, success, error, hover, focus, and reduced-motion states with accessible controls that meet WCAG 2.1 AA contrast requirements.
 
 ---
 
@@ -108,7 +108,9 @@ A user should be able to use the platform with confidence when manipulating toke
 - **FR-012**: The system MUST provide clear feedback for invalid input and failed operations.
 - **FR-013**: The system MUST communicate when a capability is being processed locally, when applicable.
 - **FR-014**: The system MUST preserve a minimal Google-authenticated user profile and session state needed to support history, favorites, and workspace continuity.
-- **FR-015**: The system MUST use a shared visual language across the public experience and workspace, implemented through a shared component library, consistent spacing and typography tokens, responsive breakpoints, and accessible contrast levels that meet WCAG 2.1 AA.
+- **FR-015**: The system MUST use a shared visual language across the public experience and workspace, implemented through a shared component library, consistent spacing, typography tokens, responsive breakpoints, motion tokens, interactive states, and accessible contrast levels that meet WCAG 2.1 AA.
+- **FR-016**: The system MUST present the dashboard as a modern developer workspace rather than a simple grid of tool cards, with prominent search, workflow grouping, recent activity, favorites, and capability entry points arranged for repeated daily use.
+- **FR-017**: The system MUST provide purposeful microinteractions for core actions such as copy, favorite, execute, search, loading, error recovery, navigation, theme switching, and capability open/close transitions.
 
 ## Requirements Non-Funcionais *(mandatory)*
 
@@ -117,7 +119,7 @@ A user should be able to use the platform with confidence when manipulating toke
 - **NFR-001**: The system MUST feel fast and responsive, with the main workspace and individual capability interactions completing quickly on typical modern hardware and broadband connections.
 - **NFR-002**: The system MUST prioritize client-side processing for supported transformations to reduce latency and preserve privacy.
 - **NFR-003**: The system MUST provide a consistent experience across routes, states, and capabilities through shared navigation patterns, shared empty and error states, and the same core interaction model.
-- **NFR-004**: The system MUST present a focused visual experience with a maximum of three primary actions per screen, responsive layouts for mobile and desktop, and accessible contrast that meets WCAG 2.1 AA.
+- **NFR-004**: The system MUST present a focused, modern, visually refined developer experience with a maximum of three primary actions per screen, responsive layouts for mobile and desktop, purposeful motion, reduced-motion support, and accessible contrast that meets WCAG 2.1 AA.
 - **NFR-005**: The system MUST handle user data with privacy in mind and avoid unnecessary persistence of sensitive content.
 - **NFR-006**: The system MUST remain simple enough to support an MVP release without requiring public API, marketplace, collaboration, or AI infrastructure.
 - **NFR-007**: The system MUST be maintainable by keeping the initial capability set constrained and the overall experience coherent.
@@ -126,7 +128,7 @@ A user should be able to use the platform with confidence when manipulating toke
 ## Constitution Alignment *(mandatory)*
 
 - The feature MUST clearly address the approved user problems of context switching, tool fragmentation, privacy concerns, and inconsistent experiences.
-- The feature MUST preserve a single-workspace experience that keeps the developer in flow.
+- The feature MUST preserve a single-workspace experience that keeps the developer in flow and feels like a modern productivity cockpit rather than a disconnected tool catalog.
 - The feature MUST reflect the principles of simplicity, performance, privacy, and consistency.
 - The feature MUST remain within the approved MVP scope and exclude AI, payments, public API, marketplace, blog, and collaboration features.
 - Any added complexity MUST be justified by user value and a simpler alternative MUST be considered.
@@ -137,7 +139,7 @@ A user should be able to use the platform with confidence when manipulating toke
 
 - **SC-001**: A first-time user can reach the first meaningful value in under 30 seconds from entry into the workspace experience.
 - **SC-002**: Users can access any supported capability in at most two clicks from the workspace.
-- **SC-003**: At least one core capability can be completed successfully by a first-time user without guidance.
+- **SC-003**: At least one core capability can be completed successfully by a first-time user without guidance, with visible feedback for execution and copy actions.
 - **SC-004**: Users can find a previous capability or recent item through search or history within 30 seconds.
 - **SC-005**: A significant share of active users return for a second session and use more than one capability during the same session.
 - **SC-006**: The MVP can be demonstrated end-to-end without requiring AI, payments, or collaboration features.
@@ -171,7 +173,7 @@ A user should be able to use the platform with confidence when manipulating toke
 
 ## Risks
 
-- The product may feel like a collection of utilities unless the workspace experience is tightly designed.
+- The product may feel like a collection of utilities unless the workspace experience is tightly designed with a distinctive modern developer-workspace identity.
 - Poor search, history, or favorites design may reduce daily reuse.
 - Browser-only processing may limit certain capabilities if implementation complexity becomes excessive.
 - Over-designing the experience may slow the MVP and reduce learning value.
@@ -183,4 +185,5 @@ A user should be able to use the platform with confidence when manipulating toke
 - Basic analytics or event tracking for validating the MVP value proposition.
 - Storage for minimal user state, recent history, and favorites.
 - A design system or UI component library to support a consistent workspace experience with responsive layouts and accessible contrast requirements.
+
 

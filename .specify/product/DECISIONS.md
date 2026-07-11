@@ -1426,3 +1426,89 @@ N/A
 ## Próximos passos
 
 Atualizar research, plan e tasks para marcar as capabilities do MVP como client-side initially e explicitar limites de backend.
+
+---
+
+# D-0016
+
+## Data
+
+2026-07-11
+
+## Status
+
+Approved
+
+## Categoria
+
+UX
+
+## Responsável
+
+Product Owner
+
+## Contexto
+
+O produto será usado por desenvolvedores em tarefas recorrentes. A experiência precisa ser funcional e rápida, mas também deve transmitir modernidade, atenção ao detalhe e prazer de uso para incentivar retorno diário.
+
+## Problema
+
+Uma interface apenas correta ou administrativa pode fazer a plataforma parecer mais um catálogo genérico de ferramentas. Por outro lado, animações excessivas ou estética decorativa podem prejudicar foco, performance e confiança.
+
+## Decisão
+
+O MVP deve adotar uma direção de **Modern Developer Workspace**: uma interface técnica, atual, visualmente refinada e agradável para uso recorrente, com motion e microinterações intencionais.
+
+A experiência deve parecer um cockpit de produtividade para devs, não uma landing page genérica nem um dashboard corporativo seco. O workspace deve priorizar busca, acesso rápido, favoritos, histórico e capabilities como superfícies vivas e bem organizadas.
+
+Animações são permitidas e desejadas quando reforçam feedback, orientação espacial, transição de estado ou sensação de resposta. Elas não devem atrasar tarefas, esconder informação, reduzir acessibilidade ou comprometer performance.
+
+## Alternativas consideradas
+
+- UI minimalista e estritamente utilitária.
+- UI visualmente marcante, mas com animações decorativas.
+- Workspace moderno com motion funcional e estética técnica premium.
+
+## Motivo da escolha
+
+A decisão diferencia o produto de utilitários comuns, aumenta percepção de qualidade e mantém alinhamento com os princípios de Stay in Flow, Speed is a Feature, Consistency Creates Trust e Build for Daily Use.
+
+## Consequências
+
+- O design system deve incluir tokens, estados interativos, motion tokens e padrões consistentes de feedback.
+- Landing, auth, onboarding, dashboard e capability shell devem compartilhar a mesma linguagem visual.
+- O dashboard deve evitar uma simples grade de cards e funcionar como workspace central de produtividade.
+- Microinterações devem existir para copiar, favoritar, executar, buscar, carregar, alternar tema e navegar entre capability/workspace.
+- Animações devem respeitar `prefers-reduced-motion`.
+
+## Riscos
+
+- Overdesign pode atrasar o MVP.
+- Motion excessivo pode atrapalhar foco e performance.
+- Paleta ou composição muito genérica pode enfraquecer diferenciação.
+
+## Relacionado
+
+- FR-001
+- FR-003
+- FR-004
+- FR-005
+- FR-015
+- NFR-001
+- NFR-003
+- NFR-004
+- D-0001
+- D-0006
+- D-0007
+
+## Substitui
+
+N/A
+
+## Substituída por
+
+N/A
+
+## Próximos passos
+
+Atualizar spec, plan, tasks e UX checklist para exigir direção visual moderna, motion funcional e workspace com identidade própria.
