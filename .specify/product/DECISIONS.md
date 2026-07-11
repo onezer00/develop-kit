@@ -1197,3 +1197,232 @@ Após a conclusão da Sprint Discovery deverão ser registradas novas decisões 
 - Estratégia de Plugins.
 - Estratégia de APIs Públicas.
 - Estratégia Mobile.
+---
+
+# D-0013
+
+## Data
+
+2026-07-11
+
+## Status
+
+Approved
+
+## Categoria
+
+Security
+
+## Responsável
+
+Product Owner
+
+## Contexto
+
+A implementação do MVP precisa reduzir complexidade inicial de autenticação sem comprometer a capacidade de identificar usuários, preservar histórico, favoritos e preferências.
+
+## Problema
+
+Suportar autenticação local com email/senha e Google OAuth desde o início aumenta o escopo de segurança, recuperação de senha, validação de credenciais, UX de cadastro e superfície de manutenção.
+
+## Decisão
+
+O MVP utilizará apenas Google Auth como método inicial de autenticação.
+
+Autenticação local com email e senha fica fora do escopo inicial e poderá ser reavaliada em uma fase futura.
+
+## Alternativas consideradas
+
+- Email/senha + Google OAuth no MVP.
+- Apenas email/senha no MVP.
+- Apenas Google Auth no MVP.
+
+## Motivo da escolha
+
+Google Auth reduz fricção de entrada, diminui o escopo de segurança inicial e permite validar o produto com menos infraestrutura de conta própria.
+
+## Consequências
+
+- Não haverá cadastro local com senha no MVP.
+- Não haverá fluxo de recuperação de senha no MVP.
+- O backend ainda precisará manter sessão, usuário, refresh/access token e perfil mínimo.
+- O modelo de usuário deverá suportar provedor Google e deixar espaço para provedores futuros sem implementar senha agora.
+
+## Riscos
+
+- Usuários sem conta Google não conseguirão acessar o MVP.
+- Uma futura autenticação local exigirá nova spec/plan/tasks.
+
+## Relacionado
+
+- FR-002
+- FR-014
+- NFR-005
+
+## Substitui
+
+N/A
+
+## Substituída por
+
+N/A
+
+## Próximos passos
+
+Atualizar spec, plan e tasks para remover autenticação local do MVP.
+
+---
+
+# D-0014
+
+## Data
+
+2026-07-11
+
+## Status
+
+Approved
+
+## Categoria
+
+Product
+
+## Responsável
+
+Product Owner
+
+## Contexto
+
+O MVP precisa decidir se histórico recente será persistido para visitantes anônimos ou apenas para usuários autenticados.
+
+## Problema
+
+Histórico anônimo adiciona complexidade de storage local, migração posterior para conta autenticada, privacidade e consistência entre sessões/dispositivos.
+
+## Decisão
+
+No MVP, histórico recente será disponibilizado apenas para usuários autenticados.
+
+Suporte a histórico anônimo fica fora do escopo inicial e poderá ser avaliado conforme a evolução do produto.
+
+## Alternativas consideradas
+
+- Histórico apenas autenticado.
+- Histórico anônimo em localStorage.
+- Histórico anônimo com migração posterior para conta.
+
+## Motivo da escolha
+
+A decisão mantém o MVP mais simples, reduz risco de persistir dados sensíveis localmente e alinha histórico/favoritos à continuidade de workspace autenticado.
+
+## Consequências
+
+- Visitantes anônimos poderão acessar a experiência pública, mas não terão histórico persistido.
+- Histórico recente será associado ao usuário autenticado.
+- A UI deverá exibir estado vazio ou convite de login quando histórico não estiver disponível.
+
+## Riscos
+
+- Usuários podem perceber menos valor antes de autenticar.
+- Futuro suporte anônimo exigirá nova decisão e revisão de privacidade.
+
+## Relacionado
+
+- FR-002
+- FR-009
+- FR-014
+- NFR-005
+
+## Substitui
+
+N/A
+
+## Substituída por
+
+N/A
+
+## Próximos passos
+
+Atualizar plan e tasks para restringir history ao usuário autenticado.
+
+---
+
+# D-0015
+
+## Data
+
+2026-07-11
+
+## Status
+
+Approved
+
+## Categoria
+
+Architecture
+
+## Responsável
+
+Product Owner
+
+## Contexto
+
+O MVP inclui um conjunto inicial de capabilities para desenvolvedores, principalmente transformações locais de texto, payloads, datas, headers, URLs e formatos estruturados.
+
+## Problema
+
+Executar essas transformations no backend aumentaria latência, custo operacional, superfície de privacidade e complexidade sem gerar valor proporcional para o MVP.
+
+## Decisão
+
+Todas as capabilities aprovadas para o MVP serão executadas client-side inicialmente.
+
+O backend não deverá receber, processar, persistir ou logar inputs/outputs dessas transformations. O backend ficará responsável por Google Auth, sessão, perfil, preferências, favoritos, histórico de uso sem payloads sensíveis e analytics sem conteúdo sensível.
+
+O cURL Formatter permanece client-side no MVP com um subset claro de parsing/formatação. Caso evolua para parsing avançado, inspeção rica ou interpretação de shell mais complexa, poderá ser reavaliado como capability híbrida em uma fase futura.
+
+## Alternativas consideradas
+
+- Executar todas as capabilities no backend.
+- Modelo híbrido desde o MVP.
+- Executar todas as capabilities no client-side inicialmente.
+
+## Motivo da escolha
+
+A escolha preserva privacidade, melhora performance, reduz round trips, simplifica infraestrutura e reforça a proposta local-first do produto.
+
+## Consequências
+
+- Capability logic deve viver no frontend, preferencialmente em módulos isolados e testáveis.
+- Inputs e outputs sensíveis não devem sair do navegador.
+- Analytics deve registrar apenas metadata não sensível, como capability key, status e duration bucket.
+- Backend deve persistir apenas metadata necessária para histórico, favoritos e produto.
+
+## Riscos
+
+- Algumas libraries client-side podem aumentar o bundle se não forem carregadas sob demanda.
+- cURL Formatter pode exigir recorte de escopo para evitar parser complexo no MVP.
+- Inputs muito grandes podem impactar performance do navegador e exigem limites claros.
+
+## Relacionado
+
+- FR-006
+- FR-007
+- FR-011
+- FR-013
+- NFR-001
+- NFR-002
+- NFR-005
+- D-0015
+
+## Substitui
+
+N/A
+
+## Substituída por
+
+N/A
+
+## Próximos passos
+
+Atualizar research, plan e tasks para marcar as capabilities do MVP como client-side initially e explicitar limites de backend.

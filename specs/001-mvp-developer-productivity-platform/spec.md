@@ -1,4 +1,4 @@
-# Feature Specification: MVP Developer Productivity Platform
+﻿# Feature Specification: MVP Developer Productivity Platform
 
 **Feature Branch**: `001-mvp-developer-productivity-platform`
 
@@ -95,19 +95,19 @@ A user should be able to use the platform with confidence when manipulating toke
 ### Functional Requirements
 
 - **FR-001**: The system MUST provide a public entry experience that explains the product value proposition and allows access to the main workspace experience.
-- **FR-002**: The system MUST support user access to the workspace in a way that preserves the user’s own recent history and favorites.
+- **FR-002**: The system MUST support Google-authenticated user access to the workspace in a way that preserves the user's own recent history and favorites.
 - **FR-003**: The system MUST present the product as a single workspace experience rather than as a collection of isolated pages.
 - **FR-004**: The system MUST expose the approved core capabilities through the workspace experience, grouped by the Authentication, Data, and API & Web workflows defined in discovery.
 - **FR-005**: The system MUST allow users to reach any supported capability in at most two clicks from the workspace.
 - **FR-006**: The system MUST support the following initial capabilities, and no others: JWT Decoder, Base64 Encode/Decode, UUID Generator, Hash Generator, Timestamp Converter, JSON Formatter, JSON Validator, YAML Formatter, CSV to JSON, SQL Formatter, URL Encode/Decode, Query Params Parser, HTTP Status Reference, Headers Formatter, and cURL Formatter.
 - **FR-007**: The system MUST perform supported transformations in the browser whenever technically feasible and appropriate for privacy and speed.
-- **FR-008**: The system MUST provide global search that surfaces capabilities and recent items relevant to the user’s query.
+- **FR-008**: The system MUST provide global search that surfaces capabilities and recent items relevant to the userâ€™s query.
 - **FR-009**: The system MUST show recent capability usage in a dedicated history area.
 - **FR-010**: The system MUST support favorites so users can quickly return to recurring capabilities.
 - **FR-011**: The system MUST allow users to copy generated or transformed results.
 - **FR-012**: The system MUST provide clear feedback for invalid input and failed operations.
 - **FR-013**: The system MUST communicate when a capability is being processed locally, when applicable.
-- **FR-014**: The system MUST preserve a minimal user profile or session state needed to support history, favorites, and workspace continuity.
+- **FR-014**: The system MUST preserve a minimal Google-authenticated user profile and session state needed to support history, favorites, and workspace continuity.
 - **FR-015**: The system MUST use a shared visual language across the public experience and workspace, implemented through a shared component library, consistent spacing and typography tokens, responsive breakpoints, and accessible contrast levels that meet WCAG 2.1 AA.
 
 ## Requirements Non-Funcionais *(mandatory)*
@@ -148,7 +148,7 @@ A user should be able to use the platform with confidence when manipulating toke
 - The initial MVP focuses on a web-based experience and a constrained set of capabilities from the approved discovery materials.
 - The platform can process the listed transformations in the browser when that is appropriate and technically feasible.
 - The MVP should store only the minimum information needed to support history, favorites, and workspace continuity.
-- The MVP will not include billing, subscriptions, public API, or marketplace functionality in the first release.
+- The MVP will not include billing, subscriptions, local email/password authentication, public API, or marketplace functionality in the first release.
 
 ## Main User Flows
 
@@ -183,3 +183,4 @@ A user should be able to use the platform with confidence when manipulating toke
 - Basic analytics or event tracking for validating the MVP value proposition.
 - Storage for minimal user state, recent history, and favorites.
 - A design system or UI component library to support a consistent workspace experience with responsive layouts and accessible contrast requirements.
+

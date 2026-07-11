@@ -75,18 +75,17 @@
 
 #### User Story 2.1 â€” Enable secure sign-in and account creation
 
-- [ ] T005 Implement traditional authentication with email and password
-  - Description: Add registration, login, logout, and JWT-based session handling for local accounts.
-  - Arquivos provÃ¡veis: apps/api/app/api/auth.py, apps/api/app/services/auth_service.py, apps/api/app/schemas/auth.py, apps/api/app/models/user.py
-  - DependÃªncias: T003, T004
-  - CritÃ©rios de aceite: Um usuÃ¡rio pode se registrar, autenticar e receber token de acesso; login invÃ¡lido Ã© rejeitado com mensagem clara.
+- [ ] T005 Implement Google-only authentication foundation and session handling
+  - Description: Add the MVP authentication foundation for Google-authenticated users, including user lookup, session issuing, refresh/access token handling, and logout. Local email/password registration is out of scope for the MVP.
+  - Arquivos prováveis: apps/api/app/api/auth.py, apps/api/app/services/auth_service.py, apps/api/app/schemas/auth.py, apps/api/app/models/user.py
+  - Dependências: T003, T004
+  - Critérios de aceite: Um usuário autenticado via Google recebe sessão da aplicação; logout e refresh funcionam; não existe cadastro/login local com senha no MVP.
   - Prioridade: Alta
   - Estimativa: Grande
   - Subtasks:
-    - Criar endpoints de registro e login
-    - Implementar hashing e validaÃ§Ã£o de senha
+    - Criar endpoints de sessão, refresh, logout e usuário atual
+    - Implementar modelo de identidade Google sem senha local
     - Adicionar refresh/access token e logout
-
 - [ ] T006 Implement Google OAuth login and auto-provisioning
   - Description: Add the Google OAuth flow, callback handling, and automatic user creation for first-time sign-ins.
   - Arquivos provÃ¡veis: apps/api/app/api/oauth.py, apps/api/app/services/oauth_service.py, apps/web/src/pages/auth/GoogleCallback.tsx, apps/web/src/services/auth.ts
@@ -216,16 +215,16 @@
     - Definir ranking simples e resultados relevantes
 
 - [ ] T015 Implement recent history and quick resume flow
-  - Description: Record recent capability usage and surface it on the dashboard so users can quickly resume prior work.
+  - Description: Record recent capability usage for logged-in users only and surface it on the dashboard so authenticated users can quickly resume prior work.
   - Arquivos provÃ¡veis: apps/api/app/api/history.py, apps/api/app/models/recent_item.py, apps/web/src/components/RecentHistory.tsx
   - DependÃªncias: T004, T013
-  - CritÃ©rios de aceite: O histÃ³rico Ã© salvo apÃ³s uso de uma capability; o usuÃ¡rio consegue abrir um item recente e retornar ao fluxo.
+  - CritÃ©rios de aceite: O histórico é salvo apenas para usuário logado após uso de uma capability; o usuário consegue abrir um item recente e retornar ao fluxo; usuários anônimos não possuem histórico persistido no MVP.
   - Prioridade: MÃ©dia
   - Estimativa: MÃ©dia
   - Subtasks:
     - Criar endpoint e modelo de histÃ³rico
     - Expor o histÃ³rico no dashboard
-    - Definir retenÃ§Ã£o simples para o MVP
+    - Definir retenção simples para usuários autenticados no MVP
 
 ### Feature 4.2 â€” Initial capabilities
 
@@ -235,13 +234,13 @@
   - Description: Build the approved MVP capabilities: JWT Decoder, Base64 Encode/Decode, UUID Generator, Hash Generator, Timestamp Converter, JSON Formatter, JSON Validator, YAML Formatter, CSV to JSON, SQL Formatter, URL Encode/Decode, Query Params Parser, HTTP Status Reference, Headers Formatter, and cURL Formatter.
   - Arquivos provÃ¡veis: apps/web/src/features/*, apps/web/src/lib/transformers/*.ts, apps/web/src/components/CapabilityShell.tsx
   - DependÃªncias: T013
-  - CritÃ©rios de aceite: Todas as capabilities listadas estÃ£o disponÃ­veis no workspace; cada uma executa corretamente com entrada valida; o resultado pode ser copiado.
+  - Critérios de aceite: Todas as capabilities aprovadas em FR-006 estão disponíveis no workspace; cada uma executa client-side com entrada válida; o resultado pode ser copiado; inputs/outputs não são enviados ao backend.
   - Prioridade: Alta
   - Estimativa: Grande
   - Subtasks:
     - Criar registro/metadata das capabilities
-    - Implementar cada workflow com lÃ³gica client-side quando possÃ­vel
-    - Padronizar entrada, saÃ­da, erro e feedback visual
+    - Implementar cada workflow aprovado com lógica client-side
+    - Padronizar entrada, saída, erro, feedback visual e indicador de processamento local
 
 ## Epic 4.3 â€” Favorites and quick access
 
@@ -332,14 +331,14 @@
 #### User Story 5.1 â€” Validate product value and prepare the MVP for real users
 
 - [ ] T017 Implement analytics events for core product learning
-  - Description: Track meaningful events such as landing page views, sign-up, login, capability open, capability use, and completion.
+  - Description: Track the minimum MVP analytics events: landing_viewed, cta_clicked, auth_google_started, auth_google_completed, auth_failed, onboarding_completed, workspace_viewed, capability_opened, capability_executed, copy_clicked, search_performed, history_item_opened, favorite_added, favorite_removed, and error_shown.
   - Arquivos provÃ¡veis: apps/api/app/api/analytics.py, apps/web/src/lib/analytics.ts
   - DependÃªncias: T006, T015, T016
   - CritÃ©rios de aceite: Eventos principais sÃ£o enviados e persistidos corretamente; a equipe consegue acompanhar o fluxo do usuÃ¡rio.
   - Prioridade: MÃ©dia
   - Estimativa: MÃ©dia
   - Subtasks:
-    - Definir conjunto mÃ­nimo de eventos
+    - Implementar conjunto mínimo de eventos definido no plano
     - Criar camada de envio no frontend e backend
     - Validar que os eventos chegam ao armazenamento
 
@@ -382,4 +381,7 @@
     - Escrever setup local e comandos principais
     - Documentar stack, estrutura e decisÃµes de arquitetura
     - Registrar limites e prÃ³ximos passos do MVP
+
+
+
 
