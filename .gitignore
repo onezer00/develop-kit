@@ -1,0 +1,21 @@
+﻿# Spec Kit local cache
+.specify/integrations/.cache/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependencies and build outputs
+node_modules/
+dist/
+build/
+.coverage/
+coverage/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+# Local editor and OS noise
+.DS_Store
+Thumbs.db
