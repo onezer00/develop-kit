@@ -1,4 +1,4 @@
-﻿# Tasks: MVP Developer Productivity Platform
+# Tasks: MVP Developer Productivity Platform
 
 **Input**: Design documents from `/specs/001-mvp-developer-productivity-platform/`
 
@@ -17,7 +17,7 @@
 
 #### User Story 1.1 â€” Establish a reliable development foundation
 
-- [ ] T001 Create the monorepo structure and shared workspace tooling
+- [X] T001 Create the monorepo structure and shared workspace tooling
   - Description: Scaffold the repository with separate frontend, backend, shared packages, and common scripts for development, linting, and build workflows.
   - Requirement: FR-015, NFR-003, NFR-007
   - User Story: Foundation
@@ -55,7 +55,7 @@
 
 #### User Story 1.2 â€” Build the backend foundation
 
-- [ ] T003 Bootstrap the FastAPI application and base architecture
+- [X] T003 Bootstrap the FastAPI application and base architecture
   - Description: Create the backend entrypoint, router structure, configuration, and core dependencies.
   - Requirement: FR-002, FR-014, NFR-007
   - User Story: Foundation

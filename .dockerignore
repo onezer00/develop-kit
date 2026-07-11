@@ -1,0 +1,16 @@
+.git/
+node_modules/
+apps/web/dist/
+dist/
+build/
+coverage/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.env
+.env.*
+!.env.example
+Dockerfile*
+.dockerignore

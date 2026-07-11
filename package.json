@@ -1,0 +1,22 @@
+{
+  "name": "develop-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Developer Productivity Platform built with Codex and Spec Kit.",
+  "workspaces": [
+    "apps/web",
+    "packages/ui",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace apps/web",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}

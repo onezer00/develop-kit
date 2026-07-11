@@ -1,4 +1,4 @@
-﻿# Quickstart: MVP Developer Productivity Platform
+# Quickstart: MVP Developer Productivity Platform
 
 **Feature**: MVP Developer Productivity Platform  
 **Date**: 2026-07-11  
@@ -6,13 +6,13 @@
 
 ## Current State
 
-The repository currently contains Spec Kit planning artifacts and Codex instructions. Application code is not scaffolded yet. This quickstart defines the intended local workflow after T001 and T002 are implemented.
+The repository now contains the initial monorepo scaffold, React/Vite frontend shell, FastAPI backend health endpoint, shared packages, and Docker Compose files. This quickstart defines the intended local workflow as implementation continues.
 
 ## Prerequisites
 
 - Git
 - Node.js LTS
-- pnpm or npm workspaces, to be finalized in T001
+- npm workspaces
 - Python 3.11
 - Docker Desktop or compatible Docker engine
 - Google OAuth client credentials for local development
@@ -39,25 +39,25 @@ API_ORIGIN=http://localhost:8000
 
 ## Planned Local Development Commands
 
-Install dependencies after T001:
+Install dependencies:
 
 ```powershell
 npm install
 ```
 
-Start full local stack after T002:
+Start full local stack after Docker validation:
 
 ```powershell
 docker compose up --build
 ```
 
-Run frontend only after T008:
+Run frontend only:
 
 ```powershell
 npm run dev --workspace apps/web
 ```
 
-Run backend only after T003:
+Run backend only:
 
 ```powershell
 cd apps/api
