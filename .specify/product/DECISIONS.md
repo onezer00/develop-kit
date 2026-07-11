@@ -1512,3 +1512,74 @@ N/A
 ## Próximos passos
 
 Atualizar spec, plan, tasks e UX checklist para exigir direção visual moderna, motion funcional e workspace com identidade própria.
+---
+
+# D-0017
+
+## Data
+
+2026-07-11
+
+## Status
+
+Approved
+
+## Categoria
+
+UX
+
+## Responsável
+
+Product Owner
+
+## Contexto
+
+O produto já possui a direção estratégica de Developer Productivity Platform e a primeira implementação visual em andamento. A experiência precisa agora alinhar idioma, copy e referências visuais de forma explícita para manter consistência desde o início.
+
+## Problema
+
+Uma interface em inglês ou com tom genérico enfraquece a percepção de produto local, reduz clareza para o público-alvo brasileiro e aumenta o risco de a experiência parecer apenas mais um catálogo de ferramentas.
+
+## Decisão
+
+Toda a interface visível do MVP deve ser escrita em português brasileiro.
+
+A direção visual do produto deve se inspirar no caráter editorial e premium de `guillaumegouessan.com`, priorizando composição limpa, tipografia forte, ritmo visual calmo, seções bem definidas e motion funcional. A inspiração serve como referência de atmosfera e acabamento, não como réplica estrutural.
+
+## Alternativas consideradas
+
+- Interface integralmente em inglês.
+- Interface bilíngue desde o MVP.
+- Interface apenas com tradução parcial.
+
+## Motivo da escolha
+
+O português brasileiro reduz fricção para o público local e melhora a legibilidade da proposta de valor. A referência visual ajuda a orientar a experiência para um padrão mais autoral, técnico e sofisticado.
+
+## Consequências
+
+- Toda copy de produto, labels, CTAs, estados vazios e microfeedback deve usar PT-BR.
+- A documentação interna pode permanecer em inglês quando isso facilitar a implementação, mas a experiência do usuário deve permanecer em PT-BR.
+- O design system deve preservar uma estética técnica, editorial e contemporânea.
+
+## Riscos
+
+- Tradução inconsistente pode gerar uma experiência fragmentada.
+- Excesso de fidelidade à referência pode prejudicar a identidade própria do produto.
+
+## Relacionado
+
+- D-0003
+- D-0016
+
+## Substitui
+
+N/A
+
+## Substituída por
+
+N/A
+
+## Próximos passos
+
+Atualizar a spec, o frontend e os textos de produto para refletir PT-BR como idioma padrão do MVP.

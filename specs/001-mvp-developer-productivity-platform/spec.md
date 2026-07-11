@@ -1,4 +1,4 @@
-﻿# Feature Specification: MVP Developer Productivity Platform
+# Feature Specification: MVP Developer Productivity Platform
 
 **Feature Branch**: `001-mvp-developer-productivity-platform`
 
@@ -14,6 +14,7 @@
 - The MVP is framed as a Developer Productivity Platform and not as a tools catalog.
 - The scope is derived from the approved user problems UP-0001, UP-0002, UP-0003, UP-0004, UP-0005, UP-0007, and UP-0008.
 - Privacy, local-first processing where feasible, simplicity, and consistency are mandatory constraints for the MVP.
+- All user-facing copy and labels in the MVP MUST be written in Brazilian Portuguese.
 - The MVP explicitly excludes AI, payments, public API, marketplace, blog, and collaboration features.
 
 ## User Scenarios & Testing *(mandatory)*
@@ -124,6 +125,7 @@ A user should be able to use the platform with confidence when manipulating toke
 - **NFR-006**: The system MUST remain simple enough to support an MVP release without requiring public API, marketplace, collaboration, or AI infrastructure.
 - **NFR-007**: The system MUST be maintainable by keeping the initial capability set constrained and the overall experience coherent.
 - **NFR-008**: The system MUST allow early product validation without requiring monetization or advanced platform features.
+- **NFR-009**: The system MUST present all user-facing copy, labels, states, and calls to action in Brazilian Portuguese for the MVP.
 
 ## Constitution Alignment *(mandatory)*
 

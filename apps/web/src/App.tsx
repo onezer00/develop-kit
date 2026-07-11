@@ -5,7 +5,7 @@ import "./styles/app.css";
 
 function BrandMark() {
   return (
-    <Link to="/" className="brand" aria-label="Develop Kit home">
+    <Link to="/" className="brand" aria-label="Página inicial do Develop Kit">
       <span className="brand-mark"><Code2 size={20} /></span>
       <span>Develop Kit</span>
     </Link>
@@ -16,9 +16,9 @@ function AppNav() {
   return (
     <header className="app-nav">
       <BrandMark />
-      <nav aria-label="Primary navigation">
-        <Link to="/workspace">Workspace</Link>
-        <a href="http://127.0.0.1:8000/health" target="_blank" rel="noreferrer">API Health</a>
+      <nav aria-label="Navegação principal">
+        <Link to="/workspace">Área de trabalho</Link>
+        <a href="http://127.0.0.1:8000/health" target="_blank" rel="noreferrer">Saúde da API</a>
       </nav>
     </header>
   );
@@ -30,39 +30,39 @@ function LandingPage() {
       <AppNav />
       <section className="hero-shell" aria-labelledby="hero-title">
         <div className="hero-copy">
-          <p className="eyebrow"><Sparkles size={16} /> Modern developer workspace</p>
-          <h1 id="hero-title">A focused cockpit for daily developer utilities.</h1>
+          <p className="eyebrow"><Sparkles size={16} /> Área de trabalho moderna para devs</p>
+          <h1 id="hero-title">Um cockpit focado para utilidades diárias de desenvolvimento.</h1>
           <p className="hero-lede">
-            Decode, format, convert, inspect, and resume common tasks from one fast workspace designed to keep developers in flow.
+            Decodifique, formate, converta, inspecione e retome tarefas comuns em um workspace rápido criado para manter o dev em fluxo.
           </p>
           <div className="hero-actions">
-            <Link to="/workspace" className="button button-primary">Open workspace <ArrowRight size={18} /></Link>
-            <button className="button button-secondary" type="button"><LockKeyhole size={18} /> Google Auth soon</button>
+            <Link to="/workspace" className="button button-primary">Abrir workspace <ArrowRight size={18} /></Link>
+            <button className="button button-secondary" type="button"><LockKeyhole size={18} /> Google Auth em breve</button>
           </div>
           <div className="trust-row" aria-label="Product guardrails">
-            <span><ShieldCheck size={16} /> Local-first tools</span>
-            <span><Gauge size={16} /> Fast feedback</span>
-            <span><Star size={16} /> Favorites-ready</span>
+            <span><ShieldCheck size={16} /> Ferramentas locais</span>
+            <span><Gauge size={16} /> Feedback rápido</span>
+            <span><Star size={16} /> Pronto para favoritos</span>
           </div>
         </div>
-        <div className="hero-console" aria-label="Workspace preview">
+        <div className="hero-console" aria-label="Prévia do workspace">
           <div className="console-topbar"><span /><span /><span /></div>
-          <div className="console-command"><Search size={16} /> Search JSON, JWT, cURL, headers...</div>
+          <div className="console-command"><Search size={16} /> Pesquisar JSON, JWT, cURL e headers...</div>
           <div className="console-grid">
             {capabilities.slice(0, 6).map((capability) => (
               <div className="console-tile" key={capability.key}>
                 <span style={{ background: capability.accent }} />
                 <strong>{capability.title}</strong>
-                <small>{capability.workflowGroup}</small>
+                <small>{workflowGroupLabels[capability.workflowGroup]}</small>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="landing-band" aria-label="Workspace principles">
-        <article><TerminalSquare /><strong>One workspace</strong><span>Search, recent work, favorites, and tools stay together.</span></article>
-        <article><DatabaseZap /><strong>No payload storage</strong><span>Tool inputs and outputs stay in the browser for the MVP.</span></article>
-        <article><Zap /><strong>Microfeedback</strong><span>Copy, execute, favorite, and transitions feel responsive.</span></article>
+      <section className="landing-band" aria-label="Princípios do workspace">
+        <article><TerminalSquare /><strong>Um workspace</strong><span>Busca, recentes, favoritos e ferramentas ficam juntos.</span></article>
+        <article><DatabaseZap /><strong>Sem armazenar payloads</strong><span>Inputs e outputs das ferramentas permanecem no navegador no MVP.</span></article>
+        <article><Zap /><strong>Microfeedback</strong><span>Copiar, executar, favoritar e navegar responde com fluidez.</span></article>
       </section>
     </main>
   );
@@ -76,44 +76,44 @@ function WorkspacePage() {
     <main className="page workspace-page">
       <AppNav />
       <section className="workspace-shell" aria-labelledby="workspace-title">
-        <aside className="workspace-sidebar" aria-label="Workspace sections">
+        <aside className="workspace-sidebar" aria-label="Área de trabalho sections">
           <BrandMark />
           <div className="sidebar-section">
-            <p>Workflows</p>
+            <p>Fluxos</p>
             {workflowGroups.map((group) => (
               <a href={`#${group.key}`} key={group.key}>{group.icon}<span>{group.label}</span></a>
             ))}
           </div>
           <div className="sidebar-note">
             <ShieldCheck size={18} />
-            <span>Client-side execution for MVP capabilities.</span>
+            <span>Execução no navegador nas capacidades do MVP.</span>
           </div>
         </aside>
 
         <section className="workspace-main">
           <div className="workspace-hero">
             <div>
-              <p className="eyebrow"><Clock3 size={16} /> Daily utility cockpit</p>
-              <h1 id="workspace-title">Keep routine dev tasks in one flow.</h1>
+              <p className="eyebrow"><Clock3 size={16} /> Cockpit de utilidades diárias</p>
+              <h1 id="workspace-title">Mantenha tarefas recorrentes em um só fluxo.</h1>
             </div>
-            <button className="button button-secondary" type="button"><KeyRound size={18} /> Connect Google</button>
+            <button className="button button-secondary" type="button"><KeyRound size={18} /> Conectar com Google</button>
           </div>
 
-          <label className="command-bar" aria-label="Search capabilities">
+          <label className="command-bar" aria-label="Pesquisar capacidades">
             <Search size={20} />
-            <input placeholder="Search capabilities, recent work, or favorites" />
+            <input placeholder="Pesquisar capacidades, recentes ou favoritos" />
             <kbd>Ctrl K</kbd>
           </label>
 
           <div className="workspace-panels">
-            <section className="panel panel-wide" aria-label="Favorite capabilities">
-              <div className="panel-heading"><h2>Favorites</h2><span>One-click return</span></div>
+            <section className="panel panel-wide" aria-label="Capacidades favoritas">
+              <div className="panel-heading"><h2>Favoritos</h2><span>Retorno em um clique</span></div>
               <div className="mini-list">
                 {favorites.map((capability) => <CapabilityMini key={capability.key} capability={capability} />)}
               </div>
             </section>
-            <section className="panel" aria-label="Recent history">
-              <div className="panel-heading"><h2>Recent</h2><span>After login</span></div>
+            <section className="panel" aria-label="Histórico recente">
+              <div className="panel-heading"><h2>Recentes</h2><span>Após login</span></div>
               <div className="recent-list">
                 {recent.map((capability, index) => (
                   <div key={capability.key}><span>{index + 1}</span><strong>{capability.title}</strong></div>
@@ -126,7 +126,7 @@ function WorkspacePage() {
             <section className="capability-section" id={group.key} key={group.key}>
               <div className="section-heading">
                 <div>{group.icon}<h2>{group.label}</h2></div>
-                <span>{capabilities.filter((capability) => capability.workflowGroup === group.key).length} tools</span>
+                <span>{capabilities.filter((capability) => capability.workflowGroup === group.key).length} itens</span>
               </div>
               <div className="capability-grid">
                 {capabilities.filter((capability) => capability.workflowGroup === group.key).map((capability) => (
@@ -156,18 +156,28 @@ function CapabilityCard({ capability }: { capability: (typeof capabilities)[numb
     <article className="capability-card">
       <div className="card-accent" style={{ background: capability.accent }} />
       <div className="card-topline">
-        <span>{capability.executionMode}</span>
-        <button type="button" aria-label={`Favorite ${capability.title}`}><Star size={16} /></button>
+        <span>{executionModeLabels[capability.executionMode] ?? capability.executionMode}</span>
+        <button type="button" aria-label={`Favoritar ${capability.title}`}><Star size={16} /></button>
       </div>
       <h3>{capability.title}</h3>
       <p>{capability.summary}</p>
       <div className="card-actions">
-        <button className="button button-ghost" type="button">Open <ArrowRight size={16} /></button>
+        <button className="button button-ghost" type="button">Abrir <ArrowRight size={16} /></button>
         <span><CheckCircle2 size={15} /> Local</span>
       </div>
     </article>
   );
 }
+
+const workflowGroupLabels = {
+  authentication: "Autenticação",
+  data: "Dados",
+  "api-web": "API e Web"
+} as const;
+
+const executionModeLabels = {
+  "client-side": "No navegador"
+} as const;
 
 export function App() {
   return (
