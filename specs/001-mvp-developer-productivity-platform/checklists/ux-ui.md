@@ -1,4 +1,4 @@
-# UX/UI Checklist: MVP Developer Productivity Platform
+﻿# UX/UI Checklist: MVP Developer Productivity Platform
 
 **Purpose**: Validate that the user experience and visual design are clear, consistent, and suitable for the MVP.
 **Created**: 2026-07-09
@@ -15,5 +15,5 @@
 
 ## Notes
 
-- Check items off as completed: `[x]`
-- Record any UX gaps or inconsistencies inline.
+- UX scope is planned in `spec.md`, `plan.md`, T008-T013, and T016.
+- All checklist items require implementation validation.

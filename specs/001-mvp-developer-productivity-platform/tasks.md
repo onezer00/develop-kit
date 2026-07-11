@@ -19,6 +19,11 @@
 
 - [ ] T001 Create the monorepo structure and shared workspace tooling
   - Description: Scaffold the repository with separate frontend, backend, shared packages, and common scripts for development, linting, and build workflows.
+  - Requirement: FR-015, NFR-003, NFR-007
+  - User Story: Foundation
+  - User Problem: UP-0008
+  - Capability: Platform
+  - Epic: E-001
   - Arquivos provÃ¡veis: package.json, pnpm-workspace.yaml or package.json workspaces, apps/web/package.json, apps/api/package.json, packages/ui/package.json, packages/shared/package.json, tsconfig.base.json
   - DependÃªncias: Nenhuma
   - CritÃ©rios de aceite: O repositÃ³rio possui estrutura clara para web, api, ui e shared; as dependÃªncias instaladas com sucesso; scripts bÃ¡sicos funcionam.
@@ -31,6 +36,11 @@
 
 - [ ] T002 Configure Docker Compose for local development
   - Description: Add containers for the frontend, API, PostgreSQL, and Nginx with a single local startup path.
+  - Requirement: NFR-001, NFR-007
+  - User Story: Foundation
+  - User Problem: UP-0008
+  - Capability: Platform
+  - Epic: E-001
   - Arquivos provÃ¡veis: docker-compose.yml, infra/docker/Dockerfile.web, infra/docker/Dockerfile.api, infra/docker/nginx.conf, infra/env.example
   - DependÃªncias: T001
   - CritÃ©rios de aceite: O ambiente local sobe com um Ãºnico comando; os serviÃ§os se conectam corretamente; a aplicaÃ§Ã£o fica acessÃ­vel no navegador.
@@ -47,6 +57,11 @@
 
 - [ ] T003 Bootstrap the FastAPI application and base architecture
   - Description: Create the backend entrypoint, router structure, configuration, and core dependencies.
+  - Requirement: FR-002, FR-014, NFR-007
+  - User Story: Foundation
+  - User Problem: UP-0007, UP-0008
+  - Capability: Backend
+  - Epic: E-001
   - Arquivos provÃ¡veis: apps/api/app/main.py, apps/api/app/core/config.py, apps/api/app/api/__init__.py, apps/api/app/core/security.py
   - DependÃªncias: T001
   - CritÃ©rios de aceite: A API responde localmente em um endpoint de saÃºde; a estrutura modular estÃ¡ pronta para expansÃ£o.
@@ -59,6 +74,11 @@
 
 - [ ] T004 Implement database models and migrations
   - Description: Create SQLAlchemy models for users, sessions, history, analytics, and related entities, then generate Alembic migrations.
+  - Requirement: FR-002, FR-009, FR-010, FR-014, NFR-005
+  - User Story: US-3, US-4
+  - User Problem: UP-0005, UP-0007
+  - Capability: Data
+  - Epic: E-001
   - Arquivos provÃ¡veis: apps/api/app/db/base.py, apps/api/app/models/*.py, apps/api/app/db/session.py, apps/api/alembic/env.py, apps/api/alembic/versions/*.py
   - DependÃªncias: T003
   - CritÃ©rios de aceite: O banco Ã© criado corretamente; as migrations aplicam sem erro; os modelos refletem as entidades do MVP.
@@ -77,6 +97,11 @@
 
 - [ ] T005 Implement Google-only authentication foundation and session handling
   - Description: Add the MVP authentication foundation for Google-authenticated users, including user lookup, session issuing, refresh/access token handling, and logout. Local email/password registration is out of scope for the MVP.
+  - Requirement: FR-002, FR-014, NFR-005
+  - User Story: US-3, US-4
+  - User Problem: UP-0005, UP-0007
+  - Capability: Authentication
+  - Epic: E-002
   - Arquivos prováveis: apps/api/app/api/auth.py, apps/api/app/services/auth_service.py, apps/api/app/schemas/auth.py, apps/api/app/models/user.py
   - Dependências: T003, T004
   - Critérios de aceite: Um usuário autenticado via Google recebe sessão da aplicação; logout e refresh funcionam; não existe cadastro/login local com senha no MVP.
@@ -88,6 +113,11 @@
     - Adicionar refresh/access token e logout
 - [ ] T006 Implement Google OAuth login and auto-provisioning
   - Description: Add the Google OAuth flow, callback handling, and automatic user creation for first-time sign-ins.
+  - Requirement: FR-002, FR-014, NFR-005
+  - User Story: US-3, US-4
+  - User Problem: UP-0005, UP-0007
+  - Capability: Google Auth
+  - Epic: E-002
   - Arquivos provÃ¡veis: apps/api/app/api/oauth.py, apps/api/app/services/oauth_service.py, apps/web/src/pages/auth/GoogleCallback.tsx, apps/web/src/services/auth.ts
   - DependÃªncias: T005
   - CritÃ©rios de aceite: Um usuÃ¡rio consegue entrar com Google; conta nova Ã© criada automaticamente; fluxo redireciona para o app autenticado.
@@ -104,6 +134,11 @@
 
 - [ ] T007 Implement user profile, username, and theme preference flows
   - Description: Add the first-use onboarding data collection for public username and theme selection, plus profile update endpoints.
+  - Requirement: FR-002, FR-014, FR-015, NFR-003
+  - User Story: US-3
+  - User Problem: UP-0004, UP-0007
+  - Capability: Profile
+  - Epic: E-002
   - Arquivos provÃ¡veis: apps/api/app/api/users.py, apps/api/app/schemas/user.py, apps/web/src/pages/onboarding/OnboardingPage.tsx, apps/web/src/services/user.ts
   - DependÃªncias: T005, T006
   - CritÃ©rios de aceite: O usuÃ¡rio define username e tema no onboarding; os dados sÃ£o salvos e recuperados corretamente; a experiÃªncia permanece consistente.
@@ -122,6 +157,11 @@
 
 - [ ] T008 Build the frontend base application and routing structure
   - Description: Set up the Vite app, router, layout shell, and protected/public route separation.
+  - Requirement: FR-001, FR-002, FR-003, FR-015, NFR-003
+  - User Story: US-1
+  - User Problem: UP-0001, UP-0008
+  - Capability: Frontend Shell
+  - Epic: E-003
   - Arquivos provÃ¡veis: apps/web/src/main.tsx, apps/web/src/App.tsx, apps/web/src/routes/*.tsx, apps/web/src/pages/*.tsx
   - DependÃªncias: T001, T005
   - CritÃ©rios de aceite: O frontend carrega corretamente; rotas pÃºblicas e privadas funcionam; o shell do app estÃ¡ pronto para receber mÃ³dulos.
@@ -134,6 +174,11 @@
 
 - [ ] T009 Create the reusable Design System and shared UI primitives
   - Description: Build a shared UI package with tokens, buttons, cards, inputs, and layout primitives that support the premium experience.
+  - Requirement: FR-015, NFR-003, NFR-004
+  - User Story: US-1, US-4
+  - User Problem: UP-0008
+  - Capability: Design System
+  - Epic: E-003
   - Arquivos provÃ¡veis: packages/ui/src/components/*.tsx, packages/ui/src/design-tokens/*.ts, packages/ui/src/index.ts
   - DependÃªncias: T008
   - CritÃ©rios de aceite: Os componentes comuns sÃ£o reutilizÃ¡veis; eles funcionam bem em landing page, auth e dashboard; o design permanece consistente.
@@ -146,6 +191,11 @@
 
 - [ ] T010 Implement theme support through design tokens
   - Description: Support light, dark, and system-based themes with token-driven styling and persistence per user.
+  - Requirement: FR-014, FR-015, NFR-003, NFR-004
+  - User Story: US-3, US-4
+  - User Problem: UP-0007, UP-0008
+  - Capability: Preferences
+  - Epic: E-003
   - Arquivos provÃ¡veis: packages/ui/src/design-tokens/themes.ts, apps/web/src/store/theme.ts, apps/web/src/providers/ThemeProvider.tsx
   - DependÃªncias: T007, T009
   - CritÃ©rios de aceite: O usuÃ¡rio consegue alternar temas; o tema Ã© preservado na sessÃ£o e no backend quando relevante; a experiÃªncia fica visualmente consistente.
@@ -158,6 +208,11 @@
 
 - [ ] T011 Implement the main application layout and navigation
   - Description: Build the primary shell for unauthenticated and authenticated views, including navigation and workspace entry points.
+  - Requirement: FR-003, FR-004, FR-005, FR-015, NFR-003
+  - User Story: US-1
+  - User Problem: UP-0001, UP-0002, UP-0008
+  - Capability: Workspace Shell
+  - Epic: E-003
   - Arquivos provÃ¡veis: apps/web/src/layouts/MainLayout.tsx, apps/web/src/components/Sidebar.tsx, apps/web/src/components/Header.tsx
   - DependÃªncias: T008, T009
   - CritÃ©rios de aceite: O layout principal funciona em desktop e mobile bÃ¡sico; a navegaÃ§Ã£o facilita acesso Ã s capabilities e Ã¡reas principais.
@@ -174,6 +229,11 @@
 
 - [ ] T012 Build the landing page and value proposition experience
   - Description: Create a polished landing page that explains the product clearly and drives users into sign-up or sign-in.
+  - Requirement: FR-001, FR-015, NFR-004, NFR-008
+  - User Story: US-1
+  - User Problem: UP-0001
+  - Capability: Public Experience
+  - Epic: E-003
   - Arquivos provÃ¡veis: apps/web/src/pages/LandingPage.tsx, apps/web/src/components/HeroSection.tsx, apps/web/src/components/CTASection.tsx
   - DependÃªncias: T008, T009
   - CritÃ©rios de aceite: A landing page comunica claramente o valor do produto, fica visualmente premium e guia o usuÃ¡rio para o prÃ³ximo passo.
@@ -186,6 +246,11 @@
 
 - [ ] T013 Build the dashboard as the primary workspace
   - Description: Implement the main dashboard screen that acts as the central hub for capabilities, search, and recent activity.
+  - Requirement: FR-003, FR-004, FR-005, FR-009, FR-010, FR-015
+  - User Story: US-1, US-3
+  - User Problem: UP-0001, UP-0002, UP-0004, UP-0007
+  - Capability: Workspace
+  - Epic: E-003
   - Arquivos provÃ¡veis: apps/web/src/pages/DashboardPage.tsx, apps/web/src/components/CapabilityGrid.tsx, apps/web/src/components/WorkspaceShell.tsx
   - DependÃªncias: T011, T007
   - CritÃ©rios de aceite: O usuÃ¡rio entra no dashboard e consegue localizar as capabilities principais sem navegar em pÃ¡ginas isoladas.
@@ -204,6 +269,11 @@
 
 - [ ] T014 Implement global search over capabilities and recent items
   - Description: Add a global search experience that helps users find capabilities and recent work quickly.
+  - Requirement: FR-005, FR-008, NFR-001, NFR-003
+  - User Story: US-3
+  - User Problem: UP-0004, UP-0007
+  - Capability: Search
+  - Epic: E-004
   - Arquivos provÃ¡veis: apps/web/src/components/GlobalSearch.tsx, apps/web/src/services/search.ts, apps/api/app/api/search.py
   - DependÃªncias: T013
   - CritÃ©rios de aceite: O usuÃ¡rio encontra uma capability ou item recente a partir de um termo simples; o resultado aparece de forma clara e rÃ¡pida.
@@ -216,6 +286,11 @@
 
 - [ ] T015 Implement recent history and quick resume flow
   - Description: Record recent capability usage for logged-in users only and surface it on the dashboard so authenticated users can quickly resume prior work.
+  - Requirement: FR-002, FR-009, FR-014, NFR-005
+  - User Story: US-3, US-4
+  - User Problem: UP-0004, UP-0005, UP-0007
+  - Capability: Recent History
+  - Epic: E-004
   - Arquivos provÃ¡veis: apps/api/app/api/history.py, apps/api/app/models/recent_item.py, apps/web/src/components/RecentHistory.tsx
   - DependÃªncias: T004, T013
   - CritÃ©rios de aceite: O histórico é salvo apenas para usuário logado após uso de uma capability; o usuário consegue abrir um item recente e retornar ao fluxo; usuários anônimos não possuem histórico persistido no MVP.
@@ -232,6 +307,11 @@
 
 - [ ] T016 Implement the initial capability modules
   - Description: Build the approved MVP capabilities: JWT Decoder, Base64 Encode/Decode, UUID Generator, Hash Generator, Timestamp Converter, JSON Formatter, JSON Validator, YAML Formatter, CSV to JSON, SQL Formatter, URL Encode/Decode, Query Params Parser, HTTP Status Reference, Headers Formatter, and cURL Formatter.
+  - Requirement: FR-004, FR-005, FR-006, FR-007, FR-011, FR-012, FR-013, NFR-001, NFR-002, NFR-005
+  - User Story: US-1, US-2, US-4
+  - User Problem: UP-0001, UP-0002, UP-0003, UP-0005
+  - Capability: Client-side Capabilities
+  - Epic: E-004
   - Arquivos provÃ¡veis: apps/web/src/features/*, apps/web/src/lib/transformers/*.ts, apps/web/src/components/CapabilityShell.tsx
   - DependÃªncias: T013
   - Critérios de aceite: Todas as capabilities aprovadas em FR-006 estão disponíveis no workspace; cada uma executa client-side com entrada válida; o resultado pode ser copiado; inputs/outputs não são enviados ao backend.
@@ -332,6 +412,11 @@
 
 - [ ] T017 Implement analytics events for core product learning
   - Description: Track the minimum MVP analytics events: landing_viewed, cta_clicked, auth_google_started, auth_google_completed, auth_failed, onboarding_completed, workspace_viewed, capability_opened, capability_executed, copy_clicked, search_performed, history_item_opened, favorite_added, favorite_removed, and error_shown.
+  - Requirement: NFR-005, NFR-008, SC-001, SC-003, SC-004, SC-005
+  - User Story: US-1, US-2, US-3
+  - User Problem: UP-0001, UP-0004, UP-0007
+  - Capability: Analytics
+  - Epic: E-005
   - Arquivos provÃ¡veis: apps/api/app/api/analytics.py, apps/web/src/lib/analytics.ts
   - DependÃªncias: T006, T015, T016
   - CritÃ©rios de aceite: Eventos principais sÃ£o enviados e persistidos corretamente; a equipe consegue acompanhar o fluxo do usuÃ¡rio.
@@ -344,6 +429,11 @@
 
 - [ ] T018 Add basic SEO for the public experience
   - Description: Add core SEO metadata and semantic structure to the landing page to support discovery and credibility.
+  - Requirement: FR-001, NFR-008
+  - User Story: US-1
+  - User Problem: UP-0001
+  - Capability: SEO
+  - Epic: E-005
   - Arquivos provÃ¡veis: apps/web/index.html, apps/web/src/pages/LandingPage.tsx, public/robots.txt, public/sitemap.xml
   - DependÃªncias: T012
   - CritÃ©rios de aceite: A landing page possui title, description, headings e estrutura semÃ¢ntica bÃ¡sica; a pÃ¡gina indexa corretamente em mecanismos bÃ¡sicos de busca.
@@ -360,6 +450,11 @@
 
 - [ ] T019 Add automated tests for core user journeys and capability flows
   - Description: Implement unit, integration, and end-to-end tests for authentication, workspace access, search, history, and representative capabilities.
+  - Requirement: FR-002, FR-003, FR-005, FR-006, FR-008, FR-009, FR-010, FR-012, FR-013, NFR-001, NFR-003, NFR-004, NFR-005, SC-001, SC-002, SC-003, SC-004, SC-006
+  - User Story: US-1, US-2, US-3, US-4
+  - User Problem: UP-0001, UP-0002, UP-0003, UP-0005, UP-0007, UP-0008
+  - Capability: Testing
+  - Epic: E-005
   - Arquivos provÃ¡veis: apps/web/src/**/*.test.tsx, apps/api/tests/**/*.py, e2e/**/*.spec.ts
   - DependÃªncias: T005, T006, T013, T014, T015, T016
   - CritÃ©rios de aceite: Os cenÃ¡rios crÃ­ticos do MVP passam em testes automatizados; regressÃµes sÃ£o detectadas precocemente.
@@ -372,6 +467,11 @@
 
 - [ ] T020 Create README and implementation documentation
   - Description: Document the architecture, environment setup, feature scope, and local startup instructions for the MVP.
+  - Requirement: NFR-007, SC-006
+  - User Story: Delivery
+  - User Problem: UP-0008
+  - Capability: Documentation
+  - Epic: E-005
   - Arquivos provÃ¡veis: README.md, docs/architecture.md, docs/adr/*.md, docs/runbook.md
   - DependÃªncias: T001, T002, T003, T019
   - CritÃ©rios de aceite: Um novo desenvolvedor consegue rodar o projeto e entender a estrutura do MVP sem ajuda adicional.
@@ -381,6 +481,7 @@
     - Escrever setup local e comandos principais
     - Documentar stack, estrutura e decisÃµes de arquitetura
     - Registrar limites e prÃ³ximos passos do MVP
+
 
 
 

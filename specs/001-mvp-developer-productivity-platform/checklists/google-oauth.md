@@ -1,4 +1,4 @@
-# Google OAuth Checklist: MVP Developer Productivity Platform
+﻿# Google OAuth Checklist: MVP Developer Productivity Platform
 
 **Purpose**: Validate the Google sign-in flow for correctness, account creation, and recovery behavior.
 **Created**: 2026-07-09
@@ -10,9 +10,9 @@
 - [ ] CHK002 The OAuth callback completes successfully for a valid Google account.
 - [ ] CHK003 A first-time Google user creates an account automatically.
 - [ ] CHK004 A failed or canceled OAuth flow returns the user to a safe and clear state.
-- [ ] CHK005 The OAuth user receives the same onboarding and workspace experience as other users.
+- [ ] CHK005 The OAuth user receives the onboarding and workspace experience.
 
 ## Notes
 
-- Check items off as completed: `[x]`
-- Capture any OAuth failure cases inline.
+- Google Auth is the only MVP authentication method per D-0013.
+- All checklist items require implementation validation.

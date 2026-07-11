@@ -1,4 +1,4 @@
-# Capabilities Checklist: MVP Developer Productivity Platform
+﻿# Capabilities Checklist: MVP Developer Productivity Platform
 
 **Purpose**: Validate that the initial productivity capabilities are clear, usable, and safe for MVP release.
 **Created**: 2026-07-09
@@ -15,5 +15,5 @@
 
 ## Notes
 
-- Check items off as completed: `[x]`
-- Add missing capability behaviors or edge cases inline.
+- Capability scope and client-side execution model are approved in `spec.md`, `research.md`, and D-0015.
+- All checklist items require implementation validation.

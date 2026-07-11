@@ -1,4 +1,4 @@
-# SEO Checklist: MVP Developer Productivity Platform
+﻿# SEO Checklist: MVP Developer Productivity Platform
 
 **Purpose**: Validate that the public experience is discoverable and understandable to search engines and users.
 **Created**: 2026-07-09
@@ -14,5 +14,5 @@
 
 ## Notes
 
-- Check items off as completed: `[x]`
-- Add any SEO gaps or content issues inline.
+- SEO scope is planned in T018.
+- All checklist items require implementation validation.

@@ -1,4 +1,4 @@
-# Frontend Checklist: MVP Developer Productivity Platform
+﻿# Frontend Checklist: MVP Developer Productivity Platform
 
 **Purpose**: Validate that the frontend implementation is structured, accessible, and aligned with the MVP shell and routes.
 **Created**: 2026-07-09
@@ -14,5 +14,5 @@
 
 ## Notes
 
-- Check items off as completed: `[x]`
-- Add implementation notes when a requirement is met partially.
+- Frontend architecture is planned in `plan.md` and T008-T013.
+- All checklist items require implementation validation.

@@ -1,4 +1,4 @@
-# Testing Checklist: MVP Developer Productivity Platform
+﻿# Testing Checklist: MVP Developer Productivity Platform
 
 **Purpose**: Validate that the MVP is covered by objective tests for critical flows and regressions.
 **Created**: 2026-07-09
@@ -14,5 +14,5 @@
 
 ## Notes
 
-- Check items off as completed: `[x]`
-- Add failing scenarios or test gaps inline.
+- Test scope is planned in T019.
+- All checklist items require implementation validation.
